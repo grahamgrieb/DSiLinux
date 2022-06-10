@@ -44,39 +44,20 @@
 #include <asm/mach/map.h>
 
 #include <mach/power.h>
-#include <mach/fifo.h>
-#include <mach/gbaram.h>
+
 
 static const char *const nds_dt_match[] __initconst = {
 	"nintendo,dsi",
 	NULL,
 };
 
-#define WAIT_CR 	0x04000204
 
-extern struct sys_timer nds_timer;
-
-extern void __init nds_init_irq(void);
-
-static void poweroff(void)
-{
-	nds_fifo_send(FIFO_POWER_CMD(FIFO_POWER_CMD_SYSTEM_POWER, 0));
-}
 
 static void nds_machine_init(void)
 {
 	POWER_CR = POWER_2D | POWER_2D_SUB | POWER_LCD | POWER_SWAP_LCDS ;
 
-	/* Note: initial setup of wait_cr in head.S */
 
-#ifdef CONFIG_NDS_FASTGBA
-	// Switch to high speed:
-	// bit 0-1     RAM-region access cycle control 0..3=10,8,6,18 cycles
-	//     2-3     ROM 1st access cycle control    0..3=10,8,6,18 cycles
-	//       4     ROM 2nd access cycle control    0..1=6,4 cycles
-        writew( (readw(WAIT_CR) & 0xFFE0) | 0x001A, WAIT_CR);
-#endif
-	pm_power_off = poweroff;
 }
 /*
 static void __init
@@ -87,14 +68,7 @@ fixup_nds(struct machine_desc *desc, struct tag *tags,
 	mi->bank[0].size  = CONFIG_DRAM_SIZE;
 	mi->bank[0].node  = 0;
 	mi->nr_banks = 1;
-#ifdef CONFIG_NDS_ROM8BIT
-	if (gba_activate_ram()) {
-		mi->bank[1].start = gba_start;
-		mi->bank[1].size  = gba_length;
-		mi->bank[1].node  = 0;
-		mi->nr_banks = 2;
-	}
-#endif
+
 }*/
 
 MACHINE_START(NDS, "Nintendo DSi")

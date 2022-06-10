@@ -7,4 +7,3 @@
 #define POWER_3D_CORE    (1<<3)
 #define POWER_2D_SUB     (1<<9)
 #define POWER_SWAP_LCDS  (1<<15)
-
