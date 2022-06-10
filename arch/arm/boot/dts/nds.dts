@@ -1,0 +1,12 @@
+// SPDX-License-Identifier: GPL-2.0-only
+/dts-v1/;
+/ {
+	model = "Nintendo DSi";
+	compatible = "nintendo,dsi";
+
+	cpus {
+		cpu@0 {
+			compatible = "arm,arm946E-S";
+		};
+	};
+};
