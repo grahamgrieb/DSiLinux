@@ -1,0 +1,1 @@
+Ongoing Linux port to the Nintendo DSi. This repository contains the Linux distro that was worked on. Ongoing work and steps for running on the platform summarized [here](https://docs.google.com/presentation/d/1_JbsI3SnMQLOf5ePgo3ifMi4j9c2qT4s_P09jWXJtDc/edit#slide=id.p).
